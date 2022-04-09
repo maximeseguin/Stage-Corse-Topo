@@ -5,6 +5,7 @@ double double_retournement_hz(double, double); /* Calcul du double retournement 
 int validation_angle(double);                  /* Test de validation des valeurs angulaires */
 double double_retournement_v(double, double);  /* Calcul du double retournement pour V */
 
+
 int main(void)
 {
     double angle_1 = 0;
@@ -20,11 +21,12 @@ int main(void)
     else
     {
         angle_3 = double_retournement_hz(angle_1, angle_2);
-        printf("%lf\n", angle_3);
+        printf("%f\n", angle_3);
     }
      
     return 0;
 }
+
 
 /* Calcul de la valeur moyenne d'un angle horizontal par double retournement' */
 double double_retournement_hz(double hz_cercle_I, double hz_cercle_II)
