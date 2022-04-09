@@ -21,7 +21,7 @@ int main(void)
     {
         angle_3 = double_retournement_hz(angle_1, angle_2);
         printf("%lf\n", angle_3);
-    };
+    }
      
     return 0;
 }
@@ -57,13 +57,13 @@ double double_retournement_hz(double hz_cercle_I, double hz_cercle_II)
         {
             hz_corrige = -1;
             return hz_corrige;
-        };
+        }
     }
     else
     {
         hz_corrige = -1;
         return hz_corrige;
-    };
+    }
     
 }
 
@@ -73,7 +73,7 @@ double double_retournement_v(double v_cercle_I, double v_cercle_II)
     double v_corrige = -1;
     
     /* On vérifie que 0 <= v_cercle_I < 200 et que 200 < v_cercle_II < 400 */ 
-    if((validation_angle(v_cercle_I) && v_cercle_I<200) && (validation_angle(v_cercle_II) && v_cercle_II>200)
+    if((validation_angle(v_cercle_I) && v_cercle_I<200) && (validation_angle(v_cercle_II) && v_cercle_II>200))
     {
         v_corrige = (v_cercle_I+(400-v_cercle_II))/2;
         return v_corrige;
