@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-double double_retournement_hz(double, double); /* Calcul du double retournement */
+double double_retournement_hz(double, double); /* Calcul du double retournement pour Hz */
 int validation_angle(double);                  /* Test de validation des valeurs angulaires */
+double double_retournement_v(double, double);  /* Calcul du double retournement pour V */
 
 int main(void)
 {
@@ -25,6 +26,7 @@ int main(void)
     return 0;
 }
 
+/* Calcul de la valeur moyenne d'un angle horizontal par double retournement' */
 double double_retournement_hz(double hz_cercle_I, double hz_cercle_II)
 {
     double hz_corrige = -1;
@@ -63,6 +65,24 @@ double double_retournement_hz(double hz_cercle_I, double hz_cercle_II)
         return hz_corrige;
     };
     
+}
+
+/* Calcul de la valeur moyenne d'un angle vertical par double retournement' */
+double double_retournement_v(double v_cercle_I, double v_cercle_II)
+{
+    double v_corrige = -1;
+    
+    /* On vérifie que 0 <= v_cercle_I < 200 et que 200 < v_cercle_II < 400 */ 
+    if((validation_angle(v_cercle_I) && v_cercle_I<200) && (validation_angle(v_cercle_II) && v_cercle_II>200)
+    {
+        v_corrige = (v_cercle_I+(400-v_cercle_II))/2;
+        return v_corrige;
+    }
+    else
+    {
+        v_corrige = -1;
+        return v_corrige;
+    }
 }
 
 /* La fonction vérifie que la valeur angulaire est comprise entre 0 et 400 */
