@@ -5,3 +5,6 @@ EXEC = pregama
 
 pregama: pregama.c
 	gcc $< $(CFLAGS) $(LDFLAGS) -o $@
+
+clean:
+	rm $(EXEC)
