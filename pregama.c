@@ -8,18 +8,23 @@ int validation_angle(double);                  /* Test de validation des valeurs
 double double_retournement_v(double, double);  /* Calcul du double retournement pour V */
 
 
-int main(int nbarg, char * argv[])
+int main(int nbarg, char *argv[])
 {
-    if(nbarg==2)
-    {
-        nomFichierEntree = argv[1];
-        nomFichierSortie = argv[2];
+    char *nomFichierEntree;
+    char *nomFichierSortie;
+    
+    if(nbarg!=3)
+    {        
+        printf("pregama <input_file.xml> <output_file.xml>\n");
+        exit(EXIT_FAILURE);
     }
-    else
-    {
-        printf("pregama <input_file.xml> <output_file.xml>");
-        return EXIT_FAILURE;
-    }
+
+
+    nomFichierEntree = argv[1];
+    nomFichierSortie = argv[2];
+    
+    printf("%s\n", nomFichierEntree);
+    printf("%s\n", nomFichierSortie);
     
     /*
     double angle_1 = 0;
@@ -37,9 +42,10 @@ int main(int nbarg, char * argv[])
         angle_3 = double_retournement_hz(angle_1, angle_2);
         printf("%f\n", angle_3);
     }
-     
-    return EXIT_SUCCESS;
     */
+     
+    exit(EXIT_SUCCESS);
+
 }
 
 
