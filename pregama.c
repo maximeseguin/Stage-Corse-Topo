@@ -1,13 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <libxml/parser.h>
 
 double double_retournement_hz(double, double); /* Calcul du double retournement pour Hz */
 int validation_angle(double);                  /* Test de validation des valeurs angulaires */
 double double_retournement_v(double, double);  /* Calcul du double retournement pour V */
 
 
-int main(void)
+int main(int nbarg, char * argv[])
 {
+    if(nbarg==2)
+    {
+        nomFichierEntree = argv[1];
+        nomFichierSortie = argv[2];
+    }
+    else
+    {
+        printf("pregama <input_file.xml> <output_file.xml>");
+        return EXIT_FAILURE;
+    }
+    
+    /*
     double angle_1 = 0;
     double angle_2 = 0;
     double angle_3 = 0;
@@ -24,7 +38,8 @@ int main(void)
         printf("%f\n", angle_3);
     }
      
-    return 0;
+    return EXIT_SUCCESS;
+    */
 }
 
 

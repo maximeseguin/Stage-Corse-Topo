@@ -1,9 +1,12 @@
 CC = gcc
 CFLAGS = -g -Wall -ansi -pedantic
 LDFLAGS = `xml2-config --cflags --libs`
-EXEC = pregama
+EXEC = dom_ouvrir
 
 pregama: pregama.c
+	gcc $< $(CFLAGS) $(LDFLAGS) -o $@
+
+dom_ouvrir: dom_ouvrir.c
 	gcc $< $(CFLAGS) $(LDFLAGS) -o $@
 
 clean:
