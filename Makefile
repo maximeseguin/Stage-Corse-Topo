@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -g -Wall -ansi -pedantic
+CFLAGS = -g -Wall -ansi -pedantic -lm
 LDFLAGS = `xml2-config --cflags --libs`
 EXEC = dom_ouvrir
 

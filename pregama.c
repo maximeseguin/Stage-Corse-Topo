@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 #include <libxml/parser.h>
 
 double double_retournement_hz(double, double); /* Calcul du double retournement pour Hz */
 int validation_angle(double);                  /* Test de validation des valeurs angulaires */
 double double_retournement_v(double, double);  /* Calcul du double retournement pour V */
-
+double correction_atmospherique_pt(double, double, double); /* Calcul de la correction atmospherique avec pression et température */
+double correction_atmospherique_pth(double, double, double, double); /* Calcul de la correction atmospherique avec pression, température et humidité relative */
 
 int main(int nbarg, char *argv[])
 {
@@ -120,3 +122,42 @@ int validation_angle(double angle)
         return 0;
     }
 }
+
+/* Correction atmospherique avec prise en compte de la pression et température (hygrométrie fixée à 60%)
+   distance en mètre
+   pression en mbar ou HPa 
+   température en degrés celsius */
+double correction_atmospherique_pt(double distance, double pression, double temperature)
+{
+    double distance_corrigee = -1;
+    double ppm = 0;
+    
+    ppm = 282.2 - (0.2908 * pression)/(1 + 0.00366 * temperature);
+    distance_corrigee = distance * (1 + ppm * 0.000001);
+    
+    return distance_corrigee;
+}
+
+/* Correction atmospherique avec prise en compte de la pression, la température et l'humidité relative */
+double correction_atmospherique_pth(double distance, double pression, double temperature, double humidite)
+{
+    double distance_corrigee = -1;
+    double ppm = 0;
+    double x = 0;
+    
+    x = (7.5 * temperature / (237.3 + temperature)) + 0.7857;
+    ppm = 286.34 - (0.29525 * pression)/(1 + temperature / 273.15) + (0.0004126 * humidite)/(1 + temperature / 273.15) * pow(10,x);
+    distance_corrigee = distance * (1 + ppm * 0.000001);
+    
+    return distance_corrigee;
+}
+
+
+
+
+
+
+
+
+
+
